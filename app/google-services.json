@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "692432847294",
+    "firebase_url": "https://plantmonitor-4ab71-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "plantmonitor-4ab71",
+    "storage_bucket": "plantmonitor-4ab71.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692432847294:android:276e104610d78fcb14b9ef",
+        "android_client_info": {
+          "package_name": "com.example.plantmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652595458777-ot84d9ctahnt6j85satn7q2a87athrrt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp32vJ7vFJaaewuJXGwTfor2cqccaqGp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652595458777-ot84d9ctahnt6j85satn7q2a87athrrt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
