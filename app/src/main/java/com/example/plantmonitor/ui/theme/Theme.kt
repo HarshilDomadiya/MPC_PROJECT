@@ -17,13 +17,13 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = TertiaryGreen,
+    primary = PrimaryGreen,
     secondary = SecondaryGreen,
-    tertiary = Pink80,
-    background = DarkCharcoal,
-    surface = DarkCharcoal,
-    onPrimary = Color.Black,
-    onSecondary = Color.Black,
+    tertiary = TextSecondary,
+    background = Color(0xFF121212),
+    surface = Color(0xFF1E1E1E),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
     onBackground = Color.White,
     onSurface = Color.White,
 )
@@ -31,14 +31,18 @@ private val DarkColorScheme = darkColorScheme(
 private val LightColorScheme = lightColorScheme(
     primary = PrimaryGreen,
     secondary = SecondaryGreen,
-    tertiary = TertiaryGreen,
-    background = BackgroundGreen,
-    surface = Color.White,
+    tertiary = TextSecondary,
+    background = BackgroundLight,
+    surface = SurfaceLight,
     onPrimary = Color.White,
     onSecondary = Color.White,
-    onBackground = DarkCharcoal,
-    onSurface = DarkCharcoal,
-    error = ErrorRed
+    onBackground = TextPrimary,
+    onSurface = TextPrimary,
+    error = ErrorRed,
+    onError = Color.White,
+    onTertiary = Color.White,
+    surfaceVariant = Color(0xFFE8F0E8),
+    onSurfaceVariant = TextPrimary
 )
 
 @Composable
@@ -47,20 +51,13 @@ fun PlantIQTheme(
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colorScheme = LightColorScheme
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
         }
     }
 

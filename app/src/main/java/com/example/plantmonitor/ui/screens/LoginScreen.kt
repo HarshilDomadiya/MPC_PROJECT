@@ -44,7 +44,7 @@ fun LoginScreen(
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFF1F8E9) // More Lighter Green Background
+        color = MaterialTheme.colorScheme.background
     ) {
         Column(
             modifier = Modifier
@@ -58,7 +58,7 @@ fun LoginScreen(
                 text = "PlantIQ",
                 style = MaterialTheme.typography.displayMedium.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1B5E20), // Dark Green
+                    color = MaterialTheme.colorScheme.primary,
                     letterSpacing = 1.sp
                 )
             )
@@ -79,7 +79,7 @@ fun LoginScreen(
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it; authViewModel.clearError() },
-                placeholder = { Text("Email", color = Color(0xFF4E342E).copy(alpha = 0.5f)) },
+                placeholder = { Text("Email", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email,
@@ -88,10 +88,10 @@ fun LoginScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
-                    unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                    focusedTextColor = Color(0xFF4E342E), // Brown font color
-                    unfocusedTextColor = Color(0xFF4E342E)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -101,13 +101,13 @@ fun LoginScreen(
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it; authViewModel.clearError() },
-                placeholder = { Text("Password", color = Color(0xFF4E342E).copy(alpha = 0.5f)) },
+                placeholder = { Text("Password", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)) },
                 trailingIcon = {
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(
                             imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
                             contentDescription = if (passwordVisible) "Hide password" else "Show password",
-                            tint = Color(0xFF1B5E20)
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -120,10 +120,10 @@ fun LoginScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
-                    unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                    focusedTextColor = Color(0xFF4E342E), // Brown font color
-                    unfocusedTextColor = Color(0xFF4E342E)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -138,7 +138,7 @@ fun LoginScreen(
                     .fillMaxWidth()
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF1B5E20), // Dark Green Button
+                    containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = Color.White
                 )
             ) {
@@ -166,7 +166,7 @@ fun LoginScreen(
                     text = "Don't have an account? Register",
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF4E342E) // Brown font for navigation
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 )
             }

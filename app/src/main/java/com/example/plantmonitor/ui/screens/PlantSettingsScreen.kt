@@ -56,7 +56,7 @@ fun PlantSettingsScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1B5E20)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
@@ -72,7 +72,7 @@ fun PlantSettingsScreen(
                     .padding(24.dp)
                     .height(56.dp),
                 shape = RoundedCornerShape(28.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1B5E20))
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
                 Text(
                     text = "SAVE SETTINGS",
@@ -83,7 +83,7 @@ fun PlantSettingsScreen(
                 )
             }
         },
-        containerColor = Color(0xFFE8F5E9)
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -98,7 +98,7 @@ fun PlantSettingsScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F8E9))
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Row(
                     modifier = Modifier
@@ -112,7 +112,7 @@ fun PlantSettingsScreen(
                             text = "Automatic Watering",
                             style = MaterialTheme.typography.titleLarge.copy(
                                 fontWeight = FontWeight.Bold,
-                                color = Color(0xFF4E342E)
+                                color = MaterialTheme.colorScheme.onBackground
                             )
                         )
                         Spacer(modifier = Modifier.height(4.dp))
@@ -127,7 +127,7 @@ fun PlantSettingsScreen(
                         onCheckedChange = { localAutoWatering = it },
                         colors = SwitchDefaults.colors(
                             checkedThumbColor = Color.White,
-                            checkedTrackColor = Color(0xFF1B5E20),
+                            checkedTrackColor = MaterialTheme.colorScheme.primary,
                             uncheckedThumbColor = Color.White,
                             uncheckedTrackColor = Color.Gray.copy(alpha = 0.5f)
                         )
@@ -141,14 +141,14 @@ fun PlantSettingsScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F8E9))
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Column(modifier = Modifier.padding(20.dp)) {
                     Text(
                         text = "Soil Moisture Threshold",
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF4E342E)
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     )
                     
@@ -167,8 +167,8 @@ fun PlantSettingsScreen(
                         onValueChange = { localThreshold = it },
                         valueRange = 0f..100f,
                         colors = SliderDefaults.colors(
-                            thumbColor = Color(0xFF1B5E20),
-                            activeTrackColor = Color(0xFF1B5E20),
+                            thumbColor = MaterialTheme.colorScheme.primary,
+                            activeTrackColor = MaterialTheme.colorScheme.primary,
                             inactiveTrackColor = Color.Gray.copy(alpha = 0.3f)
                         )
                     )

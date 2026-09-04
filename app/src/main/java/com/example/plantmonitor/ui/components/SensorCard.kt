@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.plantmonitor.ui.theme.ErrorRed
-import com.example.plantmonitor.ui.theme.PrimaryGreen
+import com.example.plantmonitor.ui.theme.OfflineGray
+import com.example.plantmonitor.ui.theme.SuccessGreen
 
 @Composable
 fun SensorCard(
@@ -67,14 +67,14 @@ fun SensorCard(
                 // Sensor connection badge
                 Surface(
                     shape = RoundedCornerShape(8.dp),
-                    color = if (isConnected) PrimaryGreen.copy(alpha = 0.12f) else ErrorRed.copy(alpha = 0.12f)
+                    color = if (isConnected) SuccessGreen.copy(alpha = 0.12f) else OfflineGray.copy(alpha = 0.12f)
                 ) {
                     Text(
                         text = if (isConnected) "$sensorName: Connected" else "$sensorName: Not Connected",
                         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontWeight = FontWeight.SemiBold,
-                            color = if (isConnected) PrimaryGreen else ErrorRed
+                            color = if (isConnected) SuccessGreen else OfflineGray
                         )
                     )
                 }

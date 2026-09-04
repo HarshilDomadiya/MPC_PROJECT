@@ -57,11 +57,11 @@ fun AddPlantScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1B5E20)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
-        containerColor = Color(0xFFE8F5E9)
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -93,9 +93,9 @@ fun AddPlantScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f),
-                    focusedLabelColor = Color(0xFF1B5E20)
+                    focusedLabelColor = MaterialTheme.colorScheme.primary
                 )
             )
 
@@ -111,9 +111,9 @@ fun AddPlantScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f),
-                    focusedLabelColor = Color(0xFF1B5E20)
+                    focusedLabelColor = MaterialTheme.colorScheme.primary
                 )
             )
 
@@ -133,9 +133,9 @@ fun AddPlantScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f),
-                    focusedLabelColor = Color(0xFF1B5E20)
+                    focusedLabelColor = MaterialTheme.colorScheme.primary
                 )
             )
 
@@ -150,9 +150,9 @@ fun AddPlantScreen(
                     .fillMaxWidth()
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFA5D6A7).copy(alpha = 0.8f), // Muted green matching image
-                    contentColor = Color.White.copy(alpha = 0.8f),
-                    disabledContainerColor = Color(0xFFA5D6A7).copy(alpha = 0.5f)
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = Color.White,
+                    disabledContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                 )
             ) {
                 if (isSubmitting) {

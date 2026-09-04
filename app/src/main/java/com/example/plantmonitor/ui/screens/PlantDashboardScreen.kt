@@ -69,11 +69,11 @@ fun PlantDashboardScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1B5E20)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
-        containerColor = Color(0xFFE8F5E9)
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -95,7 +95,7 @@ fun PlantDashboardScreen(
                         text = plant?.name ?: "",
                         style = MaterialTheme.typography.displaySmall.copy(
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF333333)
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     )
                     Text(
@@ -104,7 +104,7 @@ fun PlantDashboardScreen(
                     )
                     Text(
                         text = "Device: ${plant?.deviceId ?: "None"}",
-                        style = MaterialTheme.typography.bodyLarge.copy(color = Color(0xFF333333))
+                        style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onBackground)
                     )
                 }
 
@@ -140,7 +140,7 @@ fun PlantDashboardScreen(
                 text = "Real-time Sensors",
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF4E342E) // Dark Brown/Charcoal
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -202,7 +202,7 @@ fun PlantDashboardScreen(
                 text = "Automatic Irrigation",
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF4E342E)
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -211,7 +211,7 @@ fun PlantDashboardScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F8E9))
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     StatusRow(label = "Status", value = statusText, isOnline = isOnline)
@@ -226,7 +226,7 @@ fun PlantDashboardScreen(
                         Text(
                             text = "${settings?.moistureThreshold?.roundToInt() ?: 40} %",
                             style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
-                            color = Color(0xFF333333)
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }
@@ -239,7 +239,7 @@ fun PlantDashboardScreen(
                 text = "Water Pump",
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF4E342E)
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -248,7 +248,7 @@ fun PlantDashboardScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFF1F8E9))
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(text = "Status", style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
@@ -276,7 +276,7 @@ fun PlantDashboardScreen(
                         Button(
                             onClick = { showPumpDialog = true },
                             shape = RoundedCornerShape(24.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E7D32))
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                         ) {
                             Text(
                                 text = if (pumpState?.status == true) "STOP PUMP" else "START PUMP",
@@ -306,7 +306,7 @@ fun PlantDashboardScreen(
                 onClick = { onNavigateToHistory(plantId) },
                 modifier = Modifier.fillMaxWidth().height(50.dp),
                 shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1B5E20))
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
                 Icon(Icons.Default.ShowChart, contentDescription = null)
                 Spacer(modifier = Modifier.width(12.dp))
@@ -324,7 +324,7 @@ fun PlantDashboardScreen(
                     Text(
                         text = if (isCurrentlyOn) "Stop Pump?" else "Start Pump?",
                         style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                        color = Color(0xFF333333)
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                 },
                 text = {
@@ -344,7 +344,7 @@ fun PlantDashboardScreen(
                         Text(
                             text = if (isCurrentlyOn) "STOP" else "START",
                             style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
-                            color = Color(0xFF1B5E20)
+                            color = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -357,7 +357,7 @@ fun PlantDashboardScreen(
                         )
                     }
                 },
-                containerColor = Color.White,
+                containerColor = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(28.dp)
             )
         }
@@ -369,7 +369,7 @@ fun PlantDashboardScreen(
                     Text(
                         text = "Delete Plant?",
                         style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                        color = Color(0xFF333333)
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                 },
                 text = {
@@ -404,7 +404,7 @@ fun PlantDashboardScreen(
                         )
                     }
                 },
-                containerColor = Color.White,
+                containerColor = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(28.dp)
             )
         }

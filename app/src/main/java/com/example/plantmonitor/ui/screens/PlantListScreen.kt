@@ -72,21 +72,21 @@ fun PlantListScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1B5E20)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = onAddPlant,
-                containerColor = Color(0xFF1B5E20),
+                containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = Color.White,
                 shape = CircleShape
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Add Plant", modifier = Modifier.size(32.dp))
             }
         },
-        containerColor = Color(0xFFE8F5E9)
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Box(
             modifier = Modifier
@@ -96,7 +96,7 @@ fun PlantListScreen(
             when (val state = plantsState) {
                 is Resource.Loading -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator(color = Color(0xFF1B5E20))
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                     }
                 }
                 is Resource.Error -> {
@@ -125,7 +125,7 @@ fun PlantListScreen(
                                 text = "No plants added yet. Tap + to add one.",
                                 style = MaterialTheme.typography.bodyLarge.copy(
                                     fontSize = 18.sp,
-                                    color = Color(0xFF333333).copy(alpha = 0.8f)
+                                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
                                 ),
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier.padding(horizontal = 40.dp)
@@ -160,7 +160,7 @@ private fun PlantItemCard(
         modifier = Modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
@@ -180,7 +180,7 @@ private fun PlantItemCard(
                     text = plant.name,
                     style = MaterialTheme.typography.headlineSmall.copy(
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF333333)
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                 )
             }
@@ -203,25 +203,26 @@ private fun PlantItemCard(
                 text = "Device: ${plant.deviceId}",
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF333333)
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
+                val statusColor = if (plant.online) com.example.plantmonitor.ui.theme.SuccessGreen else com.example.plantmonitor.ui.theme.OfflineGray
                 Box(
                     modifier = Modifier
                         .size(16.dp)
                         .background(
-                            color = if (plant.online) Color(0xFF4CAF50) else Color(0xFFF44336),
+                            color = statusColor,
                             shape = CircleShape
                         )
                 )
                 Spacer(modifier = Modifier.width(10.dp))
                 Text(
                     text = if (plant.online) "Online" else "Offline",
-                    color = if (plant.online) Color(0xFF4CAF50) else Color(0xFFF44336),
+                    color = statusColor,
                     style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium)
                 )
             }
@@ -236,7 +237,7 @@ private fun PlantItemCard(
                     .height(44.dp),
                 shape = RoundedCornerShape(22.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF1B5E20),
+                    containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = Color.White
                 )
             ) {

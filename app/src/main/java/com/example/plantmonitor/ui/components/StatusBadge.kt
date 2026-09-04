@@ -13,9 +13,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.plantmonitor.ui.theme.ErrorRed
 import com.example.plantmonitor.ui.theme.OfflineGray
-import com.example.plantmonitor.ui.theme.PrimaryGreen
+import com.example.plantmonitor.ui.theme.SuccessGreen
 
 @Composable
 fun StatusBadge(
@@ -25,20 +24,20 @@ fun StatusBadge(
 ) {
     val badgeBg = when {
         statusText.contains("No device", ignoreCase = true) -> OfflineGray.copy(alpha = 0.15f)
-        isOnline -> PrimaryGreen.copy(alpha = 0.15f)
-        else -> ErrorRed.copy(alpha = 0.15f)
+        isOnline -> SuccessGreen.copy(alpha = 0.15f)
+        else -> OfflineGray.copy(alpha = 0.15f)
     }
 
     val dotColor = when {
         statusText.contains("No device", ignoreCase = true) -> OfflineGray
-        isOnline -> PrimaryGreen
-        else -> ErrorRed
+        isOnline -> SuccessGreen
+        else -> OfflineGray
     }
 
     val textColor = when {
         statusText.contains("No device", ignoreCase = true) -> OfflineGray
-        isOnline -> PrimaryGreen
-        else -> ErrorRed
+        isOnline -> SuccessGreen
+        else -> OfflineGray
     }
 
     Row(

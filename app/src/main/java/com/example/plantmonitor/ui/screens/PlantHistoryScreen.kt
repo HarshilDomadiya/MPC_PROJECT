@@ -63,11 +63,11 @@ fun PlantHistoryScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1B5E20)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
-        containerColor = Color(0xFFE8F5E9)
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -99,16 +99,16 @@ fun PlantHistoryScreen(
                         },
                         shape = RoundedCornerShape(16.dp),
                         colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFF1B5E20),
+                            selectedContainerColor = MaterialTheme.colorScheme.primary,
                             selectedLabelColor = Color.White,
-                            containerColor = Color.White.copy(alpha = 0.5f),
-                            labelColor = Color(0xFF1B5E20)
+                            containerColor = MaterialTheme.colorScheme.surface,
+                            labelColor = MaterialTheme.colorScheme.primary
                         ),
                         border = FilterChipDefaults.filterChipBorder(
                             enabled = true,
                             selected = range == selectedRange,
-                            borderColor = Color(0xFF1B5E20),
-                            selectedBorderColor = Color(0xFF1B5E20)
+                            borderColor = MaterialTheme.colorScheme.primary,
+                            selectedBorderColor = MaterialTheme.colorScheme.primary
                         )
                     )
                 }
@@ -123,7 +123,7 @@ fun PlantHistoryScreen(
                         .height(300.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    CircularProgressIndicator(color = Color(0xFF1B5E20))
+                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
             } else {
                 // 1. Soil Moisture Chart

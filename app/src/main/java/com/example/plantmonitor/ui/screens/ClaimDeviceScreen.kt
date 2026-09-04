@@ -66,11 +66,11 @@ fun ClaimDeviceScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF1B5E20)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
-        containerColor = Color(0xFFE8F5E9)
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -84,7 +84,7 @@ fun ClaimDeviceScreen(
                 text = "Connect your physical hardware to a plant profile.",
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = 18.sp,
-                    color = Color(0xFF4E342E)
+                    color = MaterialTheme.colorScheme.onBackground
                 ),
                 lineHeight = 26.sp
             )
@@ -104,7 +104,7 @@ fun ClaimDeviceScreen(
             // 1. Plant Dropdown
             Text(
                 text = "Assign to Plant",
-                style = MaterialTheme.typography.labelLarge.copy(color = Color(0xFF1B5E20), fontWeight = FontWeight.Bold),
+                style = MaterialTheme.typography.labelLarge.copy(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold),
                 modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
             )
 
@@ -125,17 +125,17 @@ fun ClaimDeviceScreen(
                         .menuAnchor(),
                     shape = RoundedCornerShape(8.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color(0xFF1B5E20),
-                        unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                        focusedTextColor = Color(0xFF333333),
-                        unfocusedTextColor = Color(0xFF333333)
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                     )
                 )
 
                 ExposedDropdownMenu(
                     expanded = isExpanded,
                     onDismissRequest = { isExpanded = false },
-                    modifier = Modifier.background(Color.White)
+                    modifier = Modifier.background(MaterialTheme.colorScheme.surface)
                 ) {
                     when (val state = plantsState) {
                         is Resource.Loading -> {
@@ -160,7 +160,7 @@ fun ClaimDeviceScreen(
                             } else {
                                 plants.forEach { plant ->
                                     DropdownMenuItem(
-                                        text = { Text(plant.name, color = Color(0xFF333333)) },
+                                        text = { Text(plant.name, color = MaterialTheme.colorScheme.onSurface) },
                                         onClick = {
                                             selectedPlantId = plant.plantId
                                             selectedPlantName = plant.name
@@ -186,7 +186,7 @@ fun ClaimDeviceScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f)
                 )
             )
@@ -206,7 +206,7 @@ fun ClaimDeviceScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f)
                 )
             )
@@ -235,9 +235,9 @@ fun ClaimDeviceScreen(
                     .height(56.dp)
                     .align(Alignment.CenterHorizontally),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFA5D6A7).copy(alpha = 0.8f),
-                    contentColor = Color.White.copy(alpha = 0.8f),
-                    disabledContainerColor = Color(0xFFA5D6A7).copy(alpha = 0.5f)
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = Color.White,
+                    disabledContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                 )
             ) {
                 if (isSubmitting) {

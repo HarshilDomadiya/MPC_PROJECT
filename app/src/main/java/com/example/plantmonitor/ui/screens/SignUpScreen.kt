@@ -46,7 +46,7 @@ fun SignUpScreen(
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFF1F8E9)
+        color = MaterialTheme.colorScheme.background
     ) {
         Column(
             modifier = Modifier
@@ -60,7 +60,7 @@ fun SignUpScreen(
                 text = "PlantIQ",
                 style = MaterialTheme.typography.displayMedium.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1B5E20),
+                    color = MaterialTheme.colorScheme.primary,
                     letterSpacing = 1.sp
                 )
             )
@@ -70,7 +70,7 @@ fun SignUpScreen(
             Text(
                 text = "Register Account",
                 style = MaterialTheme.typography.titleMedium.copy(
-                    color = Color(0xFF4E342E).copy(alpha = 0.7f)
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
                 )
             )
 
@@ -89,7 +89,7 @@ fun SignUpScreen(
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it; authViewModel.clearError() },
-                placeholder = { Text("Full Name", color = Color(0xFF4E342E).copy(alpha = 0.5f)) },
+                placeholder = { Text("Full Name", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
@@ -98,10 +98,10 @@ fun SignUpScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
-                    unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                    focusedTextColor = Color(0xFF4E342E),
-                    unfocusedTextColor = Color(0xFF4E342E)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -111,7 +111,7 @@ fun SignUpScreen(
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it; authViewModel.clearError() },
-                placeholder = { Text("Email", color = Color(0xFF4E342E).copy(alpha = 0.5f)) },
+                placeholder = { Text("Email", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email,
@@ -120,10 +120,10 @@ fun SignUpScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
-                    unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                    focusedTextColor = Color(0xFF4E342E),
-                    unfocusedTextColor = Color(0xFF4E342E)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -133,13 +133,13 @@ fun SignUpScreen(
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it; authViewModel.clearError() },
-                placeholder = { Text("Password", color = Color(0xFF4E342E).copy(alpha = 0.5f)) },
+                placeholder = { Text("Password", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)) },
                 trailingIcon = {
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(
                             imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
                             contentDescription = "Toggle password",
-                            tint = Color(0xFF1B5E20)
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -152,10 +152,10 @@ fun SignUpScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
-                    unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                    focusedTextColor = Color(0xFF4E342E),
-                    unfocusedTextColor = Color(0xFF4E342E)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -165,7 +165,7 @@ fun SignUpScreen(
             OutlinedTextField(
                 value = confirmPassword,
                 onValueChange = { confirmPassword = it; authViewModel.clearError() },
-                placeholder = { Text("Confirm Password", color = Color(0xFF4E342E).copy(alpha = 0.5f)) },
+                placeholder = { Text("Confirm Password", color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)) },
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
@@ -175,10 +175,10 @@ fun SignUpScreen(
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF1B5E20),
-                    unfocusedBorderColor = Color(0xFF1B5E20).copy(alpha = 0.5f),
-                    focusedTextColor = Color(0xFF4E342E),
-                    unfocusedTextColor = Color(0xFF4E342E)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -192,7 +192,7 @@ fun SignUpScreen(
                     .fillMaxWidth()
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF1B5E20),
+                    containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = Color.White
                 )
             ) {
@@ -220,7 +220,7 @@ fun SignUpScreen(
                     text = "Already have an account? Login",
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF4E342E)
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 )
             }
