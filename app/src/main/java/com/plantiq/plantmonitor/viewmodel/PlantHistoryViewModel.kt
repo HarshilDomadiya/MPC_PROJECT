@@ -46,6 +46,12 @@ class PlantHistoryViewModel(
         processAndAggregateData()
     }
 
+    fun reset() {
+        _rawReadings.value = emptyList()
+        _aggregatedPoints.value = emptyList()
+        _isLoading.value = false
+    }
+
     private fun processAndAggregateData() {
         val raw = _rawReadings.value
         if (raw.isEmpty()) {

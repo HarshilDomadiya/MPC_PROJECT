@@ -20,6 +20,14 @@ class FirebaseRepository(
     val currentUser: FirebaseUser?
         get() = auth.currentUser
 
+    fun getAuthStateFlow(): Flow<FirebaseUser?> = callbackFlow {
+        val listener = FirebaseAuth.AuthStateListener { auth ->
+            trySend(auth.currentUser)
+        }
+        auth.addAuthStateListener(listener)
+        awaitClose { auth.removeAuthStateListener(listener) }
+    }
+
     fun getCurrentUid(): String? = auth.currentUser?.uid
 
     // ============================================================

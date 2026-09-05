@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.plantiq.plantmonitor.data.model.Resource
 import com.plantiq.plantmonitor.data.model.UserProfile
 import com.plantiq.plantmonitor.data.repository.FirebaseRepository
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,6 +27,8 @@ class AuthViewModel(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
+    private var profileJob: Job? = null
+
     init {
         checkCurrentSession()
     }
@@ -41,18 +44,22 @@ class AuthViewModel(
     }
 
     private fun loadProfile(uid: String) {
-        viewModelScope.launch {
+        profileJob?.cancel()
+        profileJob = viewModelScope.launch {
             repository.getUserProfileStream(uid).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         _userProfile.value = resource.data
                     }
                     is Resource.Error -> {
-                        _errorMessage.value = resource.message
+                        // If we are logged out, ignore permission errors from stale listeners
+                        if (repository.currentUser != null) {
+                            _errorMessage.value = resource.message
+                        }
+                        
                         // If we get a permission error on profile load, the session might be stale
                         if (resource.message.contains("permission", ignoreCase = true)) {
-                            repository.logout()
-                            _isLoggedIn.value = false
+                            logout()
                         }
                     }
                     is Resource.Loading -> {}
@@ -108,6 +115,7 @@ class AuthViewModel(
     }
 
     fun logout() {
+        profileJob?.cancel()
         repository.logout()
         _isLoggedIn.value = false
         _userProfile.value = null

@@ -218,6 +218,20 @@ class PlantDashboardViewModel(
         }
     }
 
+    fun reset() {
+        plantJob?.cancel()
+        sensorJob?.cancel()
+        settingsJob?.cancel()
+        pumpJob?.cancel()
+        _plant.value = null
+        _sensorData.value = null
+        _settings.value = null
+        _pumpState.value = null
+        _selectedPlantId.value = null
+        _statusText.value = "Loading..."
+        _isDeviceOnline.value = false
+    }
+
     override fun onCleared() {
         super.onCleared()
         timerJob?.cancel()

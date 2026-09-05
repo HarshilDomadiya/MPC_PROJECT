@@ -33,8 +33,20 @@ class PlantListViewModel(
     private var loadPlantsJob: Job? = null
 
     init {
-        loadPlants()
+        observeAuthState()
         startStatusTimer()
+    }
+
+    private fun observeAuthState() {
+        viewModelScope.launch {
+            repository.getAuthStateFlow().collect { user ->
+                if (user != null) {
+                    loadPlants(user.uid)
+                } else {
+                    stopObserving()
+                }
+            }
+        }
     }
 
     private fun startStatusTimer() {
@@ -64,11 +76,15 @@ class PlantListViewModel(
         }
     }
 
-    fun loadPlants() {
-        val uid = repository.getCurrentUid() ?: return
-        if (loadPlantsJob?.isActive == true) return // Already loading
-
+    fun loadPlants(uid: String? = repository.getCurrentUid()) {
+        if (uid == null) {
+            stopObserving()
+            return
+        }
+        
+        loadPlantsJob?.cancel()
         loadPlantsJob = viewModelScope.launch {
+            _plantsState.value = Resource.Loading
             repository.getUserPlantsStream(uid).collect { resource ->
                 if (resource is Resource.Success) {
                     val now = System.currentTimeMillis()
@@ -77,10 +93,20 @@ class PlantListViewModel(
                     }
                     _plantsState.value = Resource.Success(processed)
                 } else {
-                    _plantsState.value = resource
+                    // Only show error if we are still logged in
+                    if (repository.currentUser != null) {
+                        _plantsState.value = resource
+                    }
                 }
             }
         }
+    }
+
+    fun stopObserving() {
+        loadPlantsJob?.cancel()
+        _plantsState.value = Resource.Success(emptyList())
+        _dialogError.value = null
+        _actionSuccess.value = false
     }
 
     fun createPlantAndClaimDevice(name: String, deviceId: String, claimCode: String) {

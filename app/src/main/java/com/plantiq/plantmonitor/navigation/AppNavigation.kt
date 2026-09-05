@@ -74,6 +74,10 @@ fun AppNavigation(
                     navController.navigate(Destinations.CLAIM_DEVICE)
                 },
                 onLogout = {
+                    authViewModel.logout()
+                    plantListViewModel.stopObserving()
+                    dashboardViewModel.reset()
+                    historyViewModel.reset()
                     navController.navigate(Destinations.LOGIN) {
                         popUpTo(0) { inclusive = true }
                     }
